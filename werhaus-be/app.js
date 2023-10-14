@@ -1,14 +1,18 @@
 var createError = require('http-errors');
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const item = require("./src/item/item.route")
+const user = require("./src/user/user.route")
 
 var app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(cors())
 
 app.get('/', function(req, res, next) {
   res.json({
@@ -19,6 +23,7 @@ app.get('/', function(req, res, next) {
   })
 })
 
+app.use('/users', require('./src/user/user.route'))
 app.use('/item', item);
 
 // catch 404 and forward to error handler
