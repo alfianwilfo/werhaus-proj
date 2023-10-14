@@ -12,7 +12,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/', function(req, res, next) {
   res.json({
-    message: 'this is test end point'
+    code: 200,
+    status: 'success',
+    message: ['this is test end point'],
+    result: []
   })
 })
 
