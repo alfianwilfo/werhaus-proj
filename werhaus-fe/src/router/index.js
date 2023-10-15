@@ -24,6 +24,11 @@ const router = createRouter({
       component: () => import('../views/CreateItem.vue')
     },
     {
+      path: '/item/add-type',
+      name: 'add type',
+      component: () => import('../views/CreateType.vue')
+    },
+    {
       path: '/so',
       name: 'so',
       component: () => import('../views/So.vue')

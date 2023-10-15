@@ -91,6 +91,10 @@ function table_item() {
         type: Sequelize.BIGINT,
         allowNull: false,
       },
+      type: {
+        type: Sequelize.STRING, 
+        allowNull: false,
+      },
       status: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -107,9 +111,41 @@ function table_item() {
   return Table;
 }
 
+function table_type() {
+    const Table = sequelize.define(
+    "type",
+    {
+      id: {
+        type: Sequelize.BIGINT,
+        primaryKey: true,
+        unique: true,
+        allowNull: false,
+      },
+      name: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      status: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1
+      }
+    },
+    {
+      underscored: true,
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
+      tableName: "types",
+    }
+  );
+  return Table;
+}
+
 db.item = table_item()
 db.user = table_user()
 db.token = table_token()
 db.item = table_item()
+db.type = table_type()
 
 module.exports = db;

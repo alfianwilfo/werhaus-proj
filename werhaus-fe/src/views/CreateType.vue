@@ -14,33 +14,12 @@ export default {
     data() {
         return {
             name: '',
-            count: 0,
-            typeData: [],
-            type: ''
         }
     },
-    mounted() {
-        this.getType()
-    },
     methods: {
-        getType () {
-            const url = 'http://localhost:8000/items/listType'
-            axios({ url })
-                .then(({ data }) => {
-                    if (data.code === 200) {
-                        this.typeData = data.result
-                        // this.toast.success('Now you can login with your account')
-                    } else {
-                        this.toast.error(data.message[0])
-                    }
-                })
-                .catch(err => {
-                    this.toast.error(err)
-                })
-        },
         submitHandler() {
-            const url = 'http://localhost:8000/items/store'
-            axios({ url, method: 'post', data: { name: this.name, count: this.count, type: this.type } })
+            this.url = 'http://localhost:8000/items/storeType'
+            axios({ url: this.url, method: 'post', data: { name: this.name } })
                 .then(({ data }) => {
                     if (data.code === 201) {
                         this.toast.success(data.message[0])
@@ -82,22 +61,8 @@ export default {
                         <ErrorMessage name="name" class="text-sm italic text-red-600"/>
                     </span> 
                 </div>
-                <div class="flex flex-col col-span-1">
-                    <p class="font-semibold capitalize">count</p>
-                    <Field v-model="count" name="count" type="number" :rules="validateCount" class="px-5 py-2 border focus:outline-none" />
-                    <span class="h-4">
-                        <ErrorMessage name="count" class="text-sm italic text-red-600"/>
-                    </span> 
-                </div>
-                <div class="flex flex-col col-span-1">
-                    <p class="font-semibold capitalize">type</p>
-                    <select v-model="type" class="px-5 py-2 border focus:outline-none">
-                        <option value="" disabled>Select Type</option>
-                        <option v-for="type in typeData" :key="type.id" :value="type.name">{{ type.name }}</option>
-                    </select>
-                </div>
             </div>
-            <button class="py-2 font-semibold text-white capitalize rounded bg-rose-600">create</button>
+            <button class="py-2 font-semibold text-white capitalize rounded bg-rose-600">add</button>
         </Form>
     </layout>
 </template>

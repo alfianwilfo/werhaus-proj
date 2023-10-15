@@ -10,14 +10,11 @@ export default {
         }
     },
     mounted () {
-        if (this.$route.name === 'dashboard') {
-            this.name = 'dashboard'
-        } else if (this.$route.name === 'item') {
-            this.name = 'item'
-        } else if (this.$route.name === 'so') {
+        if (this.$route.name === 'so') {
             this.name = 'stockopname'
-        } else if (this.$route.name === 'createItem') {
-            this.name = 'create item'
+            
+        } else {
+            this.name = this.$route.name
         }
     }
 }
