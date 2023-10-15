@@ -20,13 +20,13 @@ export default {
                     </div>
                 </div>
             </router-link>
-            <router-link to="/werhaus" class="flex items-center py-2 rounded hover:bg-white">
+            <router-link to="/item" class="flex items-center py-2 rounded hover:bg-white">
                 <div class="flex flex-row gap-x-5">
                     <div>
                         <img src="../assets/box.svg" class="w-9"> 
                     </div>
                     <div class="flex items-center justify-center">
-                        <p class="text-xl text-rose-600">Werhaus</p>
+                        <p class="text-xl text-rose-600">Item</p>
                     </div>
                 </div>
             </router-link>

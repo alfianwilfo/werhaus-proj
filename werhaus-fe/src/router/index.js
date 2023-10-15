@@ -14,9 +14,14 @@ const router = createRouter({
       component: () => import('../views/Dashboard.vue')
     },
     {
-      path: '/werhaus',
-      name: 'werhaus',
-      component: () => import('../views/Werhaus.vue')
+      path: '/item',
+      name: 'item',
+      component: () => import('../views/Item.vue')
+    },
+    {
+      path: '/item/create',
+      name: 'createItem',
+      component: () => import('../views/CreateItem.vue')
     },
     {
       path: '/so',
