@@ -120,12 +120,13 @@ exports.login = async (req, res, next) => {
                     result: [createdToken],
                 })
             } else if (token) {
-                await Helper.decodedToken(token.token)
+                const createdToken = await Helper.createToken({ employee_id: findedUser.id })
+                await Token.update({ token: createdToken }, { where: { employee_id: findedUser.id } })
                 res.json({
                     code: 200,
                     status: "success",
                     message: ["Login Success"],
-                    result: [token.token],
+                    result: [createdToken],
                 })
             }
         } catch (err) {
